@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <link rel="stylesheet" type="text/css" href="/assets/summarystyle.css">
+    <title>Coffee Stock Summary</title>
+    <!-- Load the Google Charts library -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Define your data here
+            var data = google.visualization.arrayToDataTable([
+                ['Coffee Type', 'Total Amount'],
+                ['Arabica', {{ .ArabicaTotal }}], // Replace with actual total amount of Arabica
+            ['Robusta', {{ .RobustaTotal }}] // Replace with actual total amount of Robusta
+        ]);
+
+            var options = {
+
+                is3D: true,
+                backgroundColor: '#121212', // Set the background color to black
+                legend: {
+                    textStyle: {
+                        color: 'white' // Set the text color of the legend to white
+                    }
+                },
+                slices: {
+                    0: { color: '#8d2f61' }, // Color for Arabica slice
+                    1: { color: '#227688' } // Color for Robusta slice
+                },
+                pieSliceTextStyle: {
+                    color: 'white' // Set the text color of pie slices to white
+                },
+                width: 700, // Adjust the width as needed
+                height: 500 // Adjust the height as needed
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
 </head>
 <body>
-$END$
+<h1>Coffee Stock Summary</h1>
+<div class="container2">
+    <div id="piechart" style="width: 500px; height: 500px;"></div>
+</div>
+<div class="text">
+<p>Total Amount of Arabica(g): {{ .ArabicaTotal }}</p>
+<p>Total Amount of Robusta(g): {{ .RobustaTotal }}</p>
+</div>
 </body>
 </html>

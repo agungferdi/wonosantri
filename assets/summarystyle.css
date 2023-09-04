@@ -1,0 +1,50 @@
+body {
+    background-color: #121212; /* Dark background color */
+    color: #ffffff; /* Text color */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+
+    color: #fff;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px; /* Add space between the heading and the chart */
+}
+
+#piechart {
+    width: 500px;
+    height: 300px;
+    margin: 0 auto; /* Center horizontally */
+    color: #1d1f27;
+
+
+}
+
+
+p {
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Optional: Style for the chart tooltip */
+.google-visualization-tooltip {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    font-size: 14px;
+    padding: 10px;
+}
+.text{
+    font-size: 20px;
+}
